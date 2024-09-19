@@ -2,19 +2,16 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
-import {  useKindeBrowserClient,useAuth } from '@kinde-oss/kinde-auth-nextjs'
 import React, { useEffect, useState } from 'react'
 import GlobalApi from '../_utils/GlobalApi'
 import Image from 'next/image'
 import Link from 'next/link'
-//import { createClient } from '@supabase/supabase-js'
+
 
 function CategorySearch() {
- // const supabase = createClient();
-  
-const {index} = useKindeBrowserClient();
+ 
   const [categoryList,setCategoryList]=useState([]);
- // const user = useAuth();
+ 
 
   useEffect(()=>{
     getCategoryList()
@@ -22,7 +19,7 @@ const {index} = useKindeBrowserClient();
 
   const getCategoryList=()=>{
     GlobalApi.getCategory().then(resp=>{
-      console.log(resp.data.data);
+      console.log("resp data",resp.data.data);
       setCategoryList(resp.data.data);
     })
   }
@@ -45,14 +42,23 @@ const {index} = useKindeBrowserClient();
         {/* Display List of Category  */}
         <div className='grid grid-cols-3 mt-5 md:grid-cols-4 lg:grid-cols-6 '>
         {categoryList.length>0?categoryList.map((item,index)=>index<6&&(
-          <Link href={'/search/'+item.attributes.Name} key={user.id} className='flex 
+          <Link href={'/search/'+item.attributes.Name} key={index} className='flex 
           flex-col text-center items-center
           p-5 bg-blue-50 m-2 rounded-lg cursor-pointer
           gap-2 hover:scale-110 transition-all ease-in-out'>
+            {item.attributes?.Icon?.data.attributes?.url.endsWith('.svg') ? (
+  <img
+    src={item.attributes?.Icon?.data.attributes?.url}
+    alt='icon'
+    width={40}
+    height={40}
+  />
+) :
             <Image src={item.attributes?.Icon?.data.attributes?.url}
             alt='icon'
             width={40}
             height={40}/>
+}
             <label className='text-blue-600 text-sm'>{item?.attributes?.Name}</label>
           </Link>
         ))
