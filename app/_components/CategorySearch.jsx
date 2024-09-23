@@ -46,19 +46,13 @@ function CategorySearch() {
           flex-col text-center items-center
           p-5 bg-blue-50 m-2 rounded-lg cursor-pointer
           gap-2 hover:scale-110 transition-all ease-in-out'>
-            {item.attributes?.Icon?.data.attributes?.url.endsWith('.svg') ? (
+  
   <img
-    src={item.attributes?.Icon?.data.attributes?.url}
+    src={item?.attributes?.Icon?.data?.attributes.url}
     alt='icon'
     width={40}
     height={40}
   />
-) :
-            <Image src={item.attributes?.Icon?.data.attributes?.url}
-            alt='icon'
-            width={40}
-            height={40}/>
-}
             <label className='text-blue-600 text-sm'>{item?.attributes?.Name}</label>
           </Link>
         ))
