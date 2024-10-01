@@ -18,7 +18,7 @@ function DoctorList({doctorList,heading=' Doctors'}) {
                 <div className='border-[1px] rounded-lg p-3
                 cursor-pointer hover:border-primary
                 hover:shadow-sm transition-all ease-in-out'
-                key={index.id}>
+                key={index}>
                     <Image src={doctor.attributes?.image?.data?.attributes?.url}
                     alt='doctor'
                     width={500}

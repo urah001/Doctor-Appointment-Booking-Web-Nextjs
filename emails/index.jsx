@@ -52,11 +52,11 @@ import {
           <Text style={paragraph}>
             Best,
             <br />
-            Tubeguruji App 
+            Clinco App 
           </Text>
           <Hr style={hr} />
           <Text style={footer}>
-            Developed by TubeGuruji!
+            Developed by U.R TECH
           </Text>
         </Container>
       </Body>

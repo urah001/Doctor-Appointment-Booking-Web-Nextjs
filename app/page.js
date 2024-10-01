@@ -5,6 +5,7 @@ import CategorySearch from "./_components/CategorySearch";
 import DoctorList from "./_components/DoctorList";
 import GlobalApi from "./_utils/GlobalApi";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
 
@@ -19,6 +20,9 @@ export default function Home() {
     })
   }
   return (
+    <>
+   <Link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg"/>
+<Link rel="icon" type="image/png" href="/assets/images/favicon.png"/>
     <div>
         {/* Hero Section  */}
         <Hero/>
@@ -29,5 +33,6 @@ export default function Home() {
         {/* Popular Doctor List  */}
         <DoctorList doctorList={doctorList}/>
     </div>
+    </>
   );
 }
